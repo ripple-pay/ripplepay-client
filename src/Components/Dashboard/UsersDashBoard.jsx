@@ -11,10 +11,12 @@ import UsersTransactions from '../Sections/UsersTransactions'
 import UsersSettings from '../Sections/UsersSettings'
 import UsersWebHook from '../Sections/UsersWebHook'
 import UsersActions from '../Sections/UsersActions'
+import { useSelector } from 'react-redux'
 
 
 const UsersDashBoard = () => {
     const { dashBoardConfig, setdashBoardConfig } = useContext(AppContext)
+    const { authData } = useSelector(state => state.auth)
 
     return (
         <div className='w-full h-screen'>
@@ -81,12 +83,12 @@ const UsersDashBoard = () => {
                 <div className='flex-[0.9]'>
                     <nav className='flex justify-between  py-5  rounded-sm z-50 shadow-lg'>
                         <div className='px-5'>
-                            <h1 className='text-indigo-500 italic font-bold text-[25px] font-spacegrotesk'>Buisness Name</h1>
+                            <h1 className='text-indigo-500 italic font-bold text-[25px] font-spacegrotesk'>{authData?.data?.business_name}</h1>
 
                         </div>
                         <div className='flex gap-x-4 px-4'>
 
-                            <h4 className='px-5 py-2 inline  text-black rounded-sm italic'>Businessemail@gmail.com</h4>
+                            <h4 className='px-5 py-2 inline  text-black rounded-sm italic'>{authData?.data?.email}</h4>
                         </div>
                     </nav>
                     {dashBoardConfig === "users-home" && (<UsersHome />)}

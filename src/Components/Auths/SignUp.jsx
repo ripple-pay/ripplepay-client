@@ -1,9 +1,22 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 import Navbar from '../navbar/Navbar'
 
+
 const SignUp = () => {
+    const handleChange = (e) => {
+        updateFormData({ [e.target.name]: e.target.value })
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        if (!formData.email || !formData.password) return toast.error('All fields are required')
+
+        dispatch(authUserLogin({ formData, toast, navigate }))
+    }
     return (
         <div className='w-full h-screen py-4 px-5'>
             <Navbar />

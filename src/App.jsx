@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import { LandingPage, LoginPage, UsersDashBoard, UsersHome, UsersSettings, UsersTransactions } from './Components'
 import SignUp from './Components/Auths/SignUp'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,7 +13,7 @@ function App() {
   return (
 
     <BrowserRouter>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <Routes>
         {/* PUBLIC */}
         <Route path="/" element={<LandingPage />} />
