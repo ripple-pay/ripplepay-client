@@ -1,10 +1,30 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppContext } from '../../context/Context'
+import { ClipLoader } from 'react-spinners'
+import ButtlonLoader from '../buttons/ButtlonLoader'
+import { withdrawToWalletAction } from '../../services/actions/userActions'
+import { toast } from 'react-toastify'
 
 const WithdrawToWalletModal = () => {
   const { updateModals, modals } = useContext(AppContext)
-  const { transactions, balance_customer_count } = useSelector(state => state.user)
+  const { transactions, balance_customer_count, transactionLoadingState } = useSelector(state => state.user)
+  const [formData, setFormData] = useState({ amount: 0, address: "" })
+  const dispatch = useDispatch()
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+
+  }
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault()
+    dispatch(withdrawToWalletAction({ formData, toast, updateModals, modals }))
+  }
+
+
 
   return (
     <div className="fixed grid h-screen z-20 bg-[#11111190] place-items-center w-full backdrop-blur-sm">
@@ -22,7 +42,7 @@ const WithdrawToWalletModal = () => {
 
         <form
           className='py-4'
-        // onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
         >
           <div>
             <input
@@ -30,16 +50,19 @@ const WithdrawToWalletModal = () => {
               name="amount"
               placeholder="Xrp amount"
               className="border border-gray-300 placeholder:text-[12px] text-[12px] rounded w-full h-5 px-5 py-5 mt-2 hover:outline-none focus:outline-none focus:border-gray-600 focus:ring-blue "
-            // onChange={(e) => handleChange(e)}
+              onChange={(e) => handleChange(e)}
             />
             <input
               type="text"
-              name="amount"
+              name="address"
               placeholder="Xrp wallet address"
-              className="border border-gray-300 placeholder:text-[12px] text-[12px] rounded w-full h-5 px-5 py-5 mt-2 hover:outline-none focus:outline-none focus:border-gray-600 focus:ring-blue "
-            // onChange={(e) => handleChange(e)}
+              className="border mb-2 border-gray-300 placeholder:text-[12px] text-[12px] rounded w-full h-5 px-5 py-5 mt-2 hover:outline-none focus:outline-none focus:border-gray-600 focus:ring-blue "
+              onChange={(e) => handleChange(e)}
             />
-            <button className='bg-blue-500 px-4 w-full my-3 py-2 text-white italic uppercase cursor-pointer'> Withdraw </button>
+            {transactionLoadingState == true ? (<ButtlonLoader />) :
+
+              (<button type='submit' className='bg-blue-500 px-4 w-full my-3 py-2 text-white italic uppercase cursor-pointer'> Withdraw </button>)
+            }
           </div>
 
         </form>
