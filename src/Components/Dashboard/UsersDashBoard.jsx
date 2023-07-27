@@ -12,6 +12,7 @@ import UsersSettings from '../Sections/UsersSettings'
 import UsersWebHook from '../Sections/UsersWebHook'
 import UsersActions from '../Sections/UsersActions'
 import { useSelector } from 'react-redux'
+import ModalPages from '../../data/ModalPages'
 
 
 const UsersDashBoard = () => {
@@ -70,16 +71,17 @@ const UsersDashBoard = () => {
                             }
                             className={`${dashBoardConfig === "users-webhook" ? "bg-pink-500 " : ""} flex gap-x-2 items-center tracking-widest hover:bg-pink-500 w-3/4 px-2 py-2 hover:pl-4 duration-500 ease-in-out cursor-pointer`}> <MdWebhook size={20} />Webhook</li>
                         <li>
-                           <Link to={"/"}>
-                           <button
-                                onClick={console.log("Logg")}
-                                className='inline-block bg-blue-500 px-4 py-2 w-1/2 duration-500 ease-in-out cursor-pointer'>Log out</button>
-                           </Link>
+                            <Link to={"/"}>
+                                <button
+
+                                    className='inline-block bg-blue-500 px-4 py-2 w-1/2 duration-500 ease-in-out cursor-pointer'>Log out</button>
+                            </Link>
                         </li>
                     </ul>
 
                 </div>
                 {/* {MainBar} */}
+                <ModalPages />
                 <div className='flex-[0.9]'>
                     <nav className='flex justify-between  py-5  rounded-sm z-50 shadow-lg'>
                         <div className='px-5'>
@@ -91,6 +93,7 @@ const UsersDashBoard = () => {
                             <h4 className='px-5 py-2 inline  text-black rounded-sm italic'>{authData?.data?.email}</h4>
                         </div>
                     </nav>
+
                     {dashBoardConfig === "users-home" && (<UsersHome />)}
                     {dashBoardConfig === "users-transactions" && (<UsersTransactions />)}
                     {dashBoardConfig === "users-settings" && (<UsersSettings />)}

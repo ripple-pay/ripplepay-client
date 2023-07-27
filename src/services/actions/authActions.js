@@ -5,11 +5,12 @@ import { loginInRoute, signUpRoute } from '../routes/authRoutes'
 
 export const SignUpAction = createAsyncThunk(
     'auth/SignUpAction',
-    async ({ formData }, { rejectWithValue }) => {
+    async ({ formData, toast, navigate }, { rejectWithValue }) => {
         try {
             const { data } = await signUpRoute(formData)
 
-            console.log(data)
+            toast.success("SignUp Successfull")
+            navigate('/login', { replace: true })
 
             return data
         } catch (error) {
