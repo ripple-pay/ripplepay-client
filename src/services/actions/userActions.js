@@ -38,11 +38,12 @@ export const userBalanceCustomersAction = createAsyncThunk(
 
 export const withdrawToWalletAction = createAsyncThunk(
     'user/withdrawToWalletAction',
-    async ({ formData, toast, updateModals, modals }, { rejectWithValue }) => {
+    async ({ formData, toast, updateModals, modals, navigate }, { rejectWithValue }) => {
         try {
             const { data } = await withdrawToWalletRoute(formData)
             toast.success("Withdrawal successful")
             updateModals({ showWithdrawToWalletModal: !modals.showWithdrawToWalletModal })
+            
 
             return data
         } catch (error) {

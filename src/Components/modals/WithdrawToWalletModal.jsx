@@ -5,12 +5,14 @@ import { ClipLoader } from 'react-spinners'
 import ButtlonLoader from '../buttons/ButtlonLoader'
 import { withdrawToWalletAction } from '../../services/actions/userActions'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const WithdrawToWalletModal = () => {
   const { updateModals, modals } = useContext(AppContext)
   const { transactions, balance_customer_count, transactionLoadingState } = useSelector(state => state.user)
   const [formData, setFormData] = useState({ amount: 0, address: "" })
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -18,10 +20,12 @@ const WithdrawToWalletModal = () => {
 
   }
 
-  const handleSubmit = (e) => {
-
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    dispatch(withdrawToWalletAction({ formData, toast, updateModals, modals }))
+    const res = await dispatch(withdrawToWalletAction({ formData, toast, updateModals, modals, navigate }))
+    if (res.error == undefined) {
+      navigate('/user-dashboard', { replace: true })
+    }
   }
 
 

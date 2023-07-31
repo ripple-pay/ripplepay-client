@@ -25,7 +25,7 @@ export const loginAction = createAsyncThunk(
     async ({ formData, toast, navigate }, { rejectWithValue }) => {
         try {
             const { data } = await loginInRoute(formData)
-            console.log(data, "Datatattatatt");
+          
             const payload = {
                 success: true,
                 access: data.access,

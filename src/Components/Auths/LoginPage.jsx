@@ -15,11 +15,11 @@ const LoginPage = () => {
     const { authData, authLoading } = useSelector(state => state.auth)
 
     const handleChange = (e) => {
-        console.log(e.target.value);
         setFormData({ ...formData, [e.target.name]: e.target.value })
+        
     }
     const handleSubmit = (e) => {
-      
+
         e.preventDefault()
 
         if (!formData.email || !formData.password) return toast.error('All fields are required')
