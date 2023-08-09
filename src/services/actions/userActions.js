@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { transactionRoute, userBalanceCustomersRoute, withdrawToWalletRoute } from "../routes/userRoutes"
+import { activateAccountRoute, transactionRoute, userBalanceCustomersRoute, withdrawToWalletRoute } from "../routes/userRoutes"
 
 
 export const getTransactionsActions = createAsyncThunk(
@@ -43,7 +43,7 @@ export const withdrawToWalletAction = createAsyncThunk(
             const { data } = await withdrawToWalletRoute(formData)
             toast.success("Withdrawal successful")
             updateModals({ showWithdrawToWalletModal: !modals.showWithdrawToWalletModal })
-            
+
 
             return data
         } catch (error) {
@@ -54,3 +54,21 @@ export const withdrawToWalletAction = createAsyncThunk(
     }
 )
 
+export const activateAccountAction = createAsyncThunk(
+    'user/activateAccountAction',
+    async ({ formData, toast }, { rejectWithValue }) => {
+        try {
+            console.log("Called");
+            const { data } = await activateAccountRoute(formData)
+            toast.success("Account successful")
+
+
+
+            return data
+        } catch (error) {
+            toast.console.warn(); ("Account not successful")
+            console.log(error.response)
+            return rejectWithValue(null)
+        }
+    }
+)

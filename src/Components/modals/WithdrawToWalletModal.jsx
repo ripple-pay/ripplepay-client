@@ -49,10 +49,17 @@ const WithdrawToWalletModal = () => {
           onSubmit={handleSubmit}
         >
           <div>
+            <p className='text-[14px] py-2'>Select currency</p>
+            <select name="currency" id="" className='w-full py-3 px-2'>
+              <option value="XRP">XRP</option>
+              <option value="EUR">EUR</option>
+              <option value="USD">USD</option>
+              <option value="JPY">JPY</option>
+            </select>
             <input
               type="text"
               name="amount"
-              placeholder="Xrp amount"
+              placeholder="Amount"
               className="border border-gray-300 placeholder:text-[12px] text-[12px] rounded w-full h-5 px-5 py-5 mt-2 hover:outline-none focus:outline-none focus:border-gray-600 focus:ring-blue "
               onChange={(e) => handleChange(e)}
             />

@@ -12,7 +12,7 @@ const LandingPage = () => {
             <div className='bg-purple-800  p-12 my-5 rounded-2xl'>
                 <div className='flex flex-1 space-x-4 px-10 py-10 rounded-2xl'>
                     <div className='flex-[0.5]'>
-                        <h1 className='text-[30px] text-white font-poppins font-semibold'>Cross-border Payment Business to Business Solution on XRP Ledger</h1>
+                        <h1 className='text-[30px] text-white font-poppins font-semibold'>Cross-border Payment Business to Business Solution</h1>
 
                         <Link to={"/signup"}>
 
@@ -24,11 +24,11 @@ const LandingPage = () => {
 
                     </div>
                 </div>
-                <img src={home} alt="" className='rounded-lg' />
+                <img src={home} alt="" className='rounded-lg mx-auto' />
             </div>
             <div className='bg-purple-800 py-4 my-5 mb-11 rounded-2xl'>
                 <div className='flex flex-col justify-center px-20'>
-                    <h1 className='text-[30px] text-white font-poppins font-semibold'>Seamless and cost friendly withdrawal to your wallets</h1>
+                    <h1 className='mx-auto text-[30px] text-white font-poppins font-semibold'>Seamless and cost friendly withdrawal to your wallets</h1>
                     <h1 className='mx-auto text-[14px] italic font-spacegrotesk text-white leading-6'>Receive your money into your preferred wallets and local banks</h1>
                 </div>
                 <div className='flex flex-1 space-x-4 px-10 py-10 rounded-2xl'>

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getTransactionsActions, userBalanceCustomersAction, withdrawToWalletAction } from '../actions/userActions'
+import { activateAccountAction, getTransactionsActions, userBalanceCustomersAction, withdrawToWalletAction } from '../actions/userActions'
 
 
 
@@ -8,7 +8,8 @@ const userSlice = createSlice({
     initialState: {
         transactions: null,
         balance_customer_count: null,
-        transactionLoadingState: null
+        transactionLoadingState: null,
+        activateAccountLoadingState: null
 
     },
     extraReducers: (builder) => {
@@ -44,6 +45,18 @@ const userSlice = createSlice({
         })
         builder.addCase(withdrawToWalletAction.rejected, (state, action) => {
             state.transactionLoadingState = false
+        })
+        //
+
+        builder.addCase(activateAccountAction.pending, (state, action) => {
+            state.activateAccountLoadingState = true
+        })
+        builder.addCase(activateAccountAction.fulfilled, (state, action) => {
+            state.activateAccountLoadingState = false
+
+        })
+        builder.addCase(activateAccountAction.rejected, (state, action) => {
+            state.activateAccountLoadingState = false
         })
         //
 
