@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../navbar/Navbar'
 import home from '../../assets/home.png'
 import withdraw from '../../assets/withdraw.png'
-import withdraw2 from '../../assets/withdraw2.png'
-
+import withdraw2 from '../../assets/actions.jpg'
 const LandingPage = () => {
     return (
         <div className='w-full h-screen px-5 py-10'>

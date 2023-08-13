@@ -16,7 +16,7 @@ const UsersHome = () => {
             <div className='grid grid-cols-3 mt-10 mx-5'>
                 <div className='rounded-md bg-white shadow-lg mx-2 my-1 h-[130px] p-8'>
                     <h1 className='italic text-[25px]'>XRP Balance</h1>
-                    <h1 className='italic text-[20px]'>{balance_customer_count?.balance == NaN ? "" :(balance_customer_count?.balance / 1000000).toFixed(4)} </h1>
+                    <h1 className='italic text-[20px]'>{!balance_customer_count?.balance ? "" :(balance_customer_count?.balance / 1000000).toFixed(4)} </h1>
 
                 </div>
                 <div className='rounded-md bg-white shadow-lg mx-2 my-1 h-[130px] p-8'>

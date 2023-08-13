@@ -40,7 +40,7 @@ export const loginAction = createAsyncThunk(
 
                 navigate('/user-dashboard', { replace: true })
 
-                console.log(data)
+                
             }
 
             return data

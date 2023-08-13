@@ -92,12 +92,16 @@ const UsersDashBoard = () => {
                         <div className='px-5'>
                             <h1 className='text-indigo-500 italic font-bold text-[25px] font-spacegrotesk'>
                                 {authData?.data?.business_name}
+                              
                             </h1>
 
                         </div>
                         <div className='flex gap-x-4 px-4'>
 
-                            <h4 className='px-5 py-2 inline  text-black rounded-sm italic'>{authData?.data?.email}</h4>
+                            <h4 className='px-5 py-2 inline  text-black rounded-sm italic'>
+                                {authData?.data?.email}
+                              
+                                </h4>
                         </div>
                     </nav>
 
