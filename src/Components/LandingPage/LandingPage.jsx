@@ -11,7 +11,7 @@ const LandingPage = () => {
             <div className='bg-purple-800  p-12 my-5 rounded-2xl'>
                 <div className='flex flex-1 space-x-4 px-10 py-10 rounded-2xl'>
                     <div className='flex-[0.5]'>
-                        <h1 className='text-[30px] text-white font-poppins font-semibold'>Cross-border Payment Business to Business Solution</h1>
+                        <h1 className='text-[30px] text-white font-poppins font-semibold'>Multi-currency Cross-border Business to Business Payment Solution</h1>
 
                         <Link to={"/signup"}>
 
