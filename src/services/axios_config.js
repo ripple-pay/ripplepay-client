@@ -7,7 +7,8 @@ let USERFROMLS = localStorage.getItem('user') ? JSON.parse(localStorage.getItem(
 const instance = axios.create({
     baseURL: import.meta.env.VITE_APP_DEV_API,
     headers: {
-        // 'Content-Type': 'application/json',
+
+        // Authorization: `Bearer${USERFROMLS.access}`
     },
 })
 
@@ -16,6 +17,7 @@ instance.interceptors.request.use(
     (req) => {
         USERFROMLS = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
         if (USERFROMLS) {
+
             req.headers['Authorization'] = `Bearer ${USERFROMLS.access}`
         }
         return req
@@ -25,6 +27,13 @@ instance.interceptors.request.use(
     }
 )
 
+
+// instance.interceptors.request.use((config) => {
+
+//     config.headers.Authorization = `Bearer ${USERFROMLS.access}`
+//     console.log(config.headers.Authorization, "Configggggggggggggg");
+//     return config;
+// });
 
 instance.interceptors.response.use(
     (res) => {
