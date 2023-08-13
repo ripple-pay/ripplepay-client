@@ -27,9 +27,10 @@ const SignUp = () => {
     return (
         <div className='w-full h-screen py-4 px-5'>
             <Navbar />
-            <div className='my-8'>
-                <div className='flex w-full justify-center items-center'>
-                    <h1 className='text-[30px] mb-4'>Sign Up</h1>
+            <div className='my-4'>
+                <div className='flex flex-col w-full justify-center items-center'>
+                    <h1 className='text-[30px] mb-1'>Sign Up</h1>
+                    <p className='w-1/2 text-[14px] italic'>By signing up you have agreed that trustlines will be added to your account so as to enable your business receive and transfer diffirent currencies across the globe.</p>
                 </div>
                 <form
                     onSubmit={handleSubmit}
@@ -39,38 +40,38 @@ const SignUp = () => {
                             <p>First Name</p>
                             <input
                                 onChange={handleChange}
-                                type="text" name="first_name" id="" className='border w-full  h-[40px] rounded-sm mb-2' placeholder='' />
+                                type="text" name="first_name" id="" className='border pl-3 w-full  h-[40px] rounded-sm mb-2' placeholder='' />
                             <p>Business Name</p>
                             <input
                                 onChange={handleChange}
-                                type="text" name="business_name" id="" className='border w-full  h-[40px] rounded-sm mb-2' placeholder='' />
+                                type="text" name="business_name" id="" className='border pl-3 w-full  h-[40px] rounded-sm mb-2' placeholder='' />
                             <p>Phone number</p>
                             <input
                                 onChange={handleChange}
-                                type="text" name="phone_number" id="" className='border w-full  h-[40px] rounded-sm mb-2' placeholder='' />
+                                type="text" name="phone_number" id="" className='border pl-3 w-full  h-[40px] rounded-sm mb-2' placeholder='' />
                             <p>Password</p>
                             <input
                                 onChange={handleChange}
-                                type="text" name="password" id="" className='border w-full  h-[40px] rounded-sm mb-2' placeholder='' />
+                                type="text" name="password" id="" className='border pl-3 w-full  h-[40px] rounded-sm mb-2' placeholder='' />
 
                         </div>
                         <div className='w-1/2 mx-4'>
                             <p>Last Name</p>
                             <input
                                 onChange={handleChange}
-                                type="text" name="last_name" id="" className='border w-full  h-[40px] rounded-sm mb-2' placeholder='' />
+                                type="text" name="last_name" id="" className='border pl-3 w-full  h-[40px] rounded-sm mb-2' placeholder='' />
                             <p>Business Email</p>
                             <input
                                 onChange={handleChange}
-                                type="text" name="email" id="" className='border w-full  h-[40px] rounded-sm mb-2' placeholder='' />
+                                type="text" name="email" id="" className='border pl-3 w-full  h-[40px] rounded-sm mb-2' placeholder='' />
                             <p>Address</p>
                             <input
                                 onChange={handleChange}
-                                type="text" name="address" id="" className='border w-full  h-[40px] rounded-sm mb-2' placeholder='' />
+                                type="text" name="address" id="" className='border pl-3 w-full  h-[40px] rounded-sm mb-2' placeholder='' />
                             <p>Confirm Password</p>
                             <input
                                 onChange={handleChange}
-                                type="text" name="confirm_password" id="" className='border w-full  h-[40px] rounded-sm mb-2' placeholder='' />
+                                type="text" name="confirm_password" id="" className='border pl-3 w-full  h-[40px] rounded-sm mb-2' placeholder='' />
 
 
                         </div>

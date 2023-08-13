@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineHome, AiOutlineTransaction } from 'react-icons/ai'
 import { CiSettings } from 'react-icons/ci'
 import { MdWebhook } from 'react-icons/md'
@@ -18,6 +18,7 @@ import ModalPages from '../../data/ModalPages'
 const UsersDashBoard = () => {
     const { dashBoardConfig, setdashBoardConfig } = useContext(AppContext)
     const { authData } = useSelector(state => state.auth)
+    const navigate = useNavigate()
 
     return (
         <div className='w-full h-screen'>
@@ -71,11 +72,15 @@ const UsersDashBoard = () => {
                             }
                             className={`${dashBoardConfig === "users-webhook" ? "bg-pink-500 " : ""} flex gap-x-2 items-center tracking-widest hover:bg-pink-500 w-3/4 px-2 py-2 hover:pl-4 duration-500 ease-in-out cursor-pointer`}> <MdWebhook size={20} />Webhook</li>
                         <li>
-                            <Link to={"/"}>
-                                <button
 
-                                    className='inline-block bg-blue-500 px-4 py-2 w-1/2 duration-500 ease-in-out cursor-pointer'>Log out</button>
-                            </Link>
+                            <button
+                                onClick={() => {
+                                    localStorage.clear()
+                                    navigate('/', { replace: true })
+                                }}
+
+                                className='inline-block bg-blue-500 px-4 py-2 w-1/2 duration-500 ease-in-out cursor-pointer'>Log out</button>
+
                         </li>
                     </ul>
 
@@ -85,7 +90,9 @@ const UsersDashBoard = () => {
                 <div className='flex-[0.9]'>
                     <nav className='flex justify-between  py-5  rounded-sm z-50 shadow-lg'>
                         <div className='px-5'>
-                            <h1 className='text-indigo-500 italic font-bold text-[25px] font-spacegrotesk'>{authData?.data?.business_name}</h1>
+                            <h1 className='text-indigo-500 italic font-bold text-[25px] font-spacegrotesk'>
+                                {authData?.data?.business_name}
+                            </h1>
 
                         </div>
                         <div className='flex gap-x-4 px-4'>

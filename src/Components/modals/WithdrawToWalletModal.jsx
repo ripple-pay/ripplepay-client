@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 const WithdrawToWalletModal = () => {
   const { updateModals, modals } = useContext(AppContext)
   const { transactions, balance_customer_count, transactionLoadingState } = useSelector(state => state.user)
-  const [formData, setFormData] = useState({ amount: 0, address: "" })
+  const [formData, setFormData] = useState({ amount: 0, address: "", currency: "" })
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -22,6 +22,7 @@ const WithdrawToWalletModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log(formData, "FORMDATA");
     const res = await dispatch(withdrawToWalletAction({ formData, toast, updateModals, modals, navigate }))
     if (res.error == undefined) {
       navigate('/user-dashboard', { replace: true })
@@ -35,26 +36,40 @@ const WithdrawToWalletModal = () => {
       <div className="bg-white w-[350px] md:w-[500px] px-[10px] md:px-[30px] py-[20px] ">
 
         <div className='flex justify-between items-center'>
-          <h1>Withdraw to wallet</h1>
+          <h1 className='italic'>Withdraw to wallet</h1>
           <div
             onClick={() => {
               updateModals({ showWithdrawToWalletModal: !modals.showWithdrawToWalletModal })
             }}
             className='bg-red-500  px-4 py-2 rounded-2xl text-white cursor-pointer'><p color='text-white text-[40px]'>x</p></div>
         </div>
-        <h1 className='text-[15px] italic'>Xrp balance: {(balance_customer_count?.balance / 1000000).toFixed(4)} </h1>
+        <div className='grid grid-cols-2 justify-between'>
+          <p className='text-[12px] font-semibold'>XRP: {(balance_customer_count?.balance / 1000000).toFixed(4)} </p>
+          <p className='text-[12px] font-semibold'>EUR: {balance_customer_count?.eur}</p>
+          <p className='text-[12px] font-semibold'>USD: {balance_customer_count?.usd}</p>
+          <p className='text-[12px] font-semibold'>JPY: {balance_customer_count?.jpy}</p>
+          <p className='text-[12px] font-semibold'>NGN: {balance_customer_count?.ngn}</p>
+        </div>
 
         <form
           className='py-4'
           onSubmit={handleSubmit}
         >
           <div>
-            <p className='text-[14px] py-2'>Select currency</p>
-            <select name="currency" id="" className='w-full py-3 px-2'>
+            {/* <p className='text-[14px] py-2'>Select currency</p> */}
+            <select
+              // onClick={(e) => {
+              //   console.log(e.target.value);
+              // }}
+              onChange={(e) => handleChange(e)}
+
+              name="currency" id="" className='w-full py-3 px-2'>
+              <option value="">Select currency</option>
               <option value="XRP">XRP</option>
               <option value="EUR">EUR</option>
               <option value="USD">USD</option>
               <option value="JPY">JPY</option>
+              <option value="NGN">NGN</option>
             </select>
             <input
               type="text"

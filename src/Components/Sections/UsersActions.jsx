@@ -24,7 +24,7 @@ const UsersActions = () => {
           onClick={() => {
             updateModals({ showWithdrawToWalletModal: !modals.showWithdrawToWalletModal })
 
-            console.log(modals.showWithdrawToWalletModal);
+              ;
           }}
 
 
@@ -40,9 +40,15 @@ const UsersActions = () => {
           Withdraw to bank
         </button>
         <button
-          onClick={() => activateAccount()}
+
+          onClick={() => {
+            updateModals({ showCurrencySwapModal: !modals.showCurrencySwapModal })
+
+
+          }}
+
           className='bg-pink-500 px-4 py-2 text-white italic uppercase cursor-pointer'>
-          Activate account
+          CURRENCY SWAP
         </button>
       </div>
     </div>
